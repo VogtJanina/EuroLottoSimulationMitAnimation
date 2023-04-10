@@ -13,10 +13,18 @@ public class LottoApp {
 	private MenuItem fileSaveItem; 
 	private MenuItem fileCloseItem; 
 	
+	private ToolBar toolBar; 
+	private ToolItem toolItemRun; 
+	private ToolItem toolItemSave; 
+	private ToolItem toolItemBackgroundColor; 
+	private ToolItem toolItemFontColor; 
+	private ToolItem toolItemReset; 
+	
 	public LottoApp() {
 		createDisplay();
 		createShell();
 		createMenues();
+		createToolBar();
 		shell.pack(); 
 	}
 	private void createDisplay() {
@@ -45,6 +53,22 @@ public class LottoApp {
 		fileCloseItem.setText("Beenden");
 	}
 	
+	private void createToolBar() {
+		toolBar = new ToolBar(shell, SWT.HORIZONTAL); 
+		GridData data = new GridData(SWT.FILL, SWT.CENTER, true, false,1,1); 
+		toolBar.setLayoutData(data);
+		toolItemRun = new ToolItem(toolBar, SWT.PUSH); 
+		toolItemRun.setText("Run"); 
+		toolItemSave = new ToolItem(toolBar, SWT.PUSH); 
+		toolItemSave.setText("Save"); 
+		toolItemBackgroundColor = new ToolItem(toolBar, SWT.PUSH); 
+		toolItemBackgroundColor.setText("BackgrundColor"); 
+		toolItemFontColor = new ToolItem(toolBar, SWT.PUSH); 
+		toolItemFontColor.setText("FontColor"); 
+		toolItemReset = new ToolItem(toolBar, SWT.PUSH); 
+		toolItemReset.setText("Reset"); 
+	}
+	
 	public void open() {
 		shell.open();
 		while(!shell.isDisposed()) {
@@ -54,5 +78,4 @@ public class LottoApp {
 		}
 	}
 	
-
 }
