@@ -1,4 +1,5 @@
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
 
@@ -20,11 +21,16 @@ public class LottoApp {
 	private ToolItem toolItemFontColor; 
 	private ToolItem toolItemReset; 
 	
+	private Label labelToggle50;
+	private Button [] toogle50; 
+	private String [] text50 = new String[50]; 
+
 	public LottoApp() {
 		createDisplay();
 		createShell();
 		createMenues();
 		createToolBar();
+		create50050area(); 
 		shell.pack(); 
 	}
 	private void createDisplay() {
@@ -33,7 +39,7 @@ public class LottoApp {
 	
 	private void createShell() {
 		shell = new Shell(display);
-		GridLayout layout = new GridLayout(1, true); 
+		GridLayout layout = new GridLayout(2, true); 
 		shell.setLayout(layout);
 	}
 	
@@ -55,7 +61,7 @@ public class LottoApp {
 	
 	private void createToolBar() {
 		toolBar = new ToolBar(shell, SWT.HORIZONTAL); 
-		GridData data = new GridData(SWT.FILL, SWT.CENTER, true, false,1,1); 
+		GridData data = new GridData(SWT.FILL, SWT.CENTER, true, false,2,1); 
 		toolBar.setLayoutData(data);
 		toolItemRun = new ToolItem(toolBar, SWT.PUSH); 
 		toolItemRun.setText("Run"); 
@@ -67,6 +73,30 @@ public class LottoApp {
 		toolItemFontColor.setText("FontColor"); 
 		toolItemReset = new ToolItem(toolBar, SWT.PUSH); 
 		toolItemReset.setText("Reset"); 
+	}
+	
+	private void create50050area() {
+		GridLayout layoutGroup = new GridLayout(); 
+		layoutGroup.numColumns = 5; 
+		Group group = new Group(shell, SWT.LEFT); 
+		group.setLayout(layoutGroup);
+		labelToggle50 = new Label(group,SWT.CENTER); 
+		labelToggle50.setText("5 aus 50:");
+		GridData data = new GridData(SWT.LEFT, SWT.FILL, true, false,5,1); 
+		labelToggle50.setLayoutData(data);
+		
+		for (int i = 1; i <=50; i++) {
+			text50[i-1] = String.valueOf(i); 
+		}
+		System.out.println(text50);
+		
+		toogle50 = new Button[text50.length];
+		for (int i=0; i<toogle50.length; i++) {
+			toogle50[i] = new Button(group,SWT.PUSH);
+			toogle50[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
+			toogle50[i].setText(text50[i]);
+			toogle50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
+		}
 	}
 	
 	public void open() {
