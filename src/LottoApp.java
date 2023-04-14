@@ -31,6 +31,11 @@ public class LottoApp {
 	private Label labelToggle12; 
 	private Button [] toogle12; 
 	private String [] text12 = new String[12]; 
+	
+	private Label labelDrawing50; 
+	private Label [] labelResult50; 
+	private Label labelDrawing12; 
+	private Label [] labelResult12; 
 
 	public LottoApp() {
 		createDisplay();
@@ -40,6 +45,7 @@ public class LottoApp {
 		create50050area(); 
 		createAnimationArea();
 		create2oo12Area();
+		createDrawingArea();
 		shell.pack(); 
 	}
 	private void createDisplay() {
@@ -145,6 +151,34 @@ public class LottoApp {
 			toogle12[i].setText(text12[i]);
 			toogle12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
+	}
+	
+	private void createDrawingArea() {
+		GridLayout layoutGroup = new GridLayout(); 
+		layoutGroup.numColumns = 5; 
+		Group group = new Group(shell, SWT.LEFT); 
+		group.setLayout(layoutGroup);
+		labelDrawing50 = new Label(group,SWT.CENTER); 
+		labelDrawing50.setText("Ziehung 5 aus 50:");
+		GridData data = new GridData(SWT.LEFT, SWT.FILL, true, false,5,1); 
+		labelDrawing50.setLayoutData(data);
+		labelResult50 = new Label[5];
+		for (int i=0; i<labelResult50.length; i++) {
+			labelResult50[i] = new Label(group, SWT.CENTER); 
+			labelResult50[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
+			labelResult50[i].setText("X");
+			labelResult50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
+		}
+		labelDrawing12 = new Label(group, SWT.CENTER); 
+		labelDrawing12.setText("Ziehung 2 aus 12:");
+		labelResult12 = new Label[2];
+		for (int i=0; i<labelResult12.length; i++) {
+			labelResult12[i] = new Label(group, SWT.CENTER); 
+			labelResult12[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
+			labelResult12[i].setText("X");
+			labelResult12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
+		}
+		labelDrawing12.setLayoutData(data);
 	}
 	
 	public void open() {
