@@ -24,6 +24,9 @@ public class LottoApp {
 	private Label labelToggle50;
 	private Button [] toogle50; 
 	private String [] text50 = new String[50]; 
+	
+	private Canvas canvas; 
+	private Animation animation; 
 
 	public LottoApp() {
 		createDisplay();
@@ -31,6 +34,7 @@ public class LottoApp {
 		createMenues();
 		createToolBar();
 		create50050area(); 
+		createAnimationArea();
 		shell.pack(); 
 	}
 	private void createDisplay() {
@@ -97,6 +101,21 @@ public class LottoApp {
 			toogle50[i].setText(text50[i]);
 			toogle50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
+	}
+	
+	private void createAnimationArea() {
+		GridData groupData = new GridData(GridData.FILL, GridData.FILL,true,true);
+		groupData.horizontalSpan =1;
+		groupData.verticalSpan =1;
+		  
+		Group group = new Group(shell,SWT.NONE);
+		group.setLayoutData(groupData);
+		
+		FillLayout layoutGroup = new FillLayout(SWT.VERTICAL);
+		group.setLayout(layoutGroup);
+		canvas = new Canvas(group, SWT.DOUBLE_BUFFERED);
+		  
+		animation = new Animation(canvas);
 	}
 	
 	public void open() {
