@@ -12,7 +12,7 @@ public class LottoApp {
 	private MenuItem fileTitle; 
 	private Menu fileMenu; 
 	private MenuItem fileSaveItem; 
-	private MenuItem fileCloseItem; 
+	private MenuItem fileExitItem; 
 	
 	private ToolBar toolBar; 
 	private ToolItem toolItemRun; 
@@ -46,6 +46,7 @@ public class LottoApp {
 		createAnimationArea();
 		create2oo12Area();
 		createDrawingArea();
+		createListeners();
 		shell.pack(); 
 	}
 	private void createDisplay() {
@@ -70,9 +71,9 @@ public class LottoApp {
 		fileSaveItem = new MenuItem(fileMenu, SWT.PUSH); 
 		//fileSaveItem.setAccelerator(SWT.CTRL + 'S');
 		fileSaveItem.setText("Speichern");
-		fileCloseItem = new MenuItem(fileMenu, SWT.PUSH); 
+		fileExitItem = new MenuItem(fileMenu, SWT.PUSH); 
 		//fileCloseItem.setAccelerator(SWT.CTRL + 'C');
-		fileCloseItem.setText("Beenden");
+		fileExitItem.setText("Beenden");
 	}
 	
 	private void createToolBar() {
@@ -180,6 +181,10 @@ public class LottoApp {
 			labelResult12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 		labelDrawing12.setLayoutData(data);
+	}
+	
+	private void createListeners() {
+		fileExitItem.addSelectionListener(new SelectionAdapterExit(shell));
 	}
 	
 	public void open() {
