@@ -56,6 +56,7 @@ public class LottoApp {
 		shell = new Shell(display);
 		GridLayout layout = new GridLayout(2, true); 
 		shell.setLayout(layout);
+		shell.setText("Simulation Euro-Lotto");
 	}
 	
 	private void createMenues() {
