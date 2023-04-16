@@ -22,14 +22,14 @@ public class LottoApp {
 	private ToolItem toolItemReset; 
 	
 	private Label labelToggle50;
-	private Button [] toogle50; 
+	private Button [] toggle50; 
 	private String [] text50 = new String[50]; 
 	
 	private Canvas canvas; 
 	private Animation animation; 
 	
 	private Label labelToggle12; 
-	private Button [] toogle12; 
+	private Button [] toggle12; 
 	private String [] text12 = new String[12]; 
 	
 	private Label labelDrawing50; 
@@ -42,7 +42,7 @@ public class LottoApp {
 		createShell();
 		createMenues();
 		createToolBar();
-		create50050area(); 
+		create5oo50Area(); 
 		createAnimationArea();
 		create2oo12Area();
 		createDrawingArea();
@@ -92,7 +92,7 @@ public class LottoApp {
 		toolItemReset.setText("Reset"); 
 	}
 	
-	private void create50050area() {
+	private void create5oo50Area() {
 		GridLayout layoutGroup = new GridLayout(); 
 		layoutGroup.numColumns = 5; 
 		Group group = new Group(shell, SWT.LEFT); 
@@ -107,12 +107,12 @@ public class LottoApp {
 		}
 		System.out.println(text50);
 		
-		toogle50 = new Button[text50.length];
-		for (int i=0; i<toogle50.length; i++) {
-			toogle50[i] = new Button(group,SWT.PUSH);
-			toogle50[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
-			toogle50[i].setText(text50[i]);
-			toogle50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
+		toggle50 = new Button[text50.length];
+		for (int i=0; i<toggle50.length; i++) {
+			toggle50[i] = new Button(group,SWT.PUSH);
+			toggle50[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
+			toggle50[i].setText(text50[i]);
+			toggle50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 	}
 	
@@ -133,7 +133,8 @@ public class LottoApp {
 	
 	private void create2oo12Area() {
 		GridLayout layoutGroup = new GridLayout(); 
-		layoutGroup.numColumns = 5; 
+		layoutGroup.numColumns = 5;
+		layoutGroup.makeColumnsEqualWidth = true; 
 		Group group = new Group(shell, SWT.LEFT); 
 		group.setLayout(layoutGroup);
 		labelToggle12 = new Label(group,SWT.CENTER); 
@@ -146,12 +147,12 @@ public class LottoApp {
 		}
 		System.out.println(text12);
 		
-		toogle12 = new Button[text12.length];
-		for (int i=0; i<toogle12.length; i++) {
-			toogle12[i] = new Button(group,SWT.PUSH);
-			toogle12[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
-			toogle12[i].setText(text12[i]);
-			toogle12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
+		toggle12 = new Button[text12.length];
+		for (int i=0; i<toggle12.length; i++) {
+			toggle12[i] = new Button(group,SWT.PUSH);
+			toggle12[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
+			toggle12[i].setText(text12[i]);
+			toggle12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 	}
 	
@@ -185,6 +186,8 @@ public class LottoApp {
 	
 	private void createListeners() {
 		fileExitItem.addSelectionListener(new SelectionAdapterExit(shell));
+		toolItemFontColor.addSelectionListener(new SelectionAdapterFontColor(shell, toogle50, toogle12));
+		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toogle50, toogle12));
 	}
 	
 	public void open() {
