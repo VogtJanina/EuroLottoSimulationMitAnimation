@@ -109,7 +109,7 @@ public class LottoApp {
 		
 		toggle50 = new Button[text50.length];
 		for (int i=0; i<toggle50.length; i++) {
-			toggle50[i] = new Button(group,SWT.PUSH);
+			toggle50[i] = new Button(group,SWT.TOGGLE);
 			toggle50[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
 			toggle50[i].setText(text50[i]);
 			toggle50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
@@ -149,7 +149,7 @@ public class LottoApp {
 		
 		toggle12 = new Button[text12.length];
 		for (int i=0; i<toggle12.length; i++) {
-			toggle12[i] = new Button(group,SWT.PUSH);
+			toggle12[i] = new Button(group,SWT.TOGGLE);
 			toggle12[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
 			toggle12[i].setText(text12[i]);
 			toggle12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
