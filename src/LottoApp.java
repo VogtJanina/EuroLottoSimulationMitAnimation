@@ -185,12 +185,17 @@ public class LottoApp {
 	}
 	
 	private void createListeners() {
+		fileSaveItem.addSelectionListener(new SelectionAdapterSave(shell));
 		fileExitItem.addSelectionListener(new SelectionAdapterExit(shell));
-		toolItemFontColor.addSelectionListener(new SelectionAdapterFontColor(shell, toogle50, toogle12));
-		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toogle50, toogle12));
+		toolItemFontColor.addSelectionListener(new SelectionAdapterFontColor(shell, toggle50, toggle12));
+		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toggle50, toggle12));
+		for (Button t: toggle50) {
+			t.addSelectionListener(new SelectionAdapterToggle5(selected5));
+		}
 	}
 	
 	public void open() {
+		
 		shell.open();
 		while(!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
