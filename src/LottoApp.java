@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.*;
@@ -36,6 +38,10 @@ public class LottoApp {
 	private Label [] labelResult50; 
 	private Label labelDrawing12; 
 	private Label [] labelResult12; 
+	
+	private Label labelError; 
+	
+	private ArrayList <String> selected5 = new ArrayList<String>(); 
 
 	public LottoApp() {
 		createDisplay();
@@ -46,6 +52,7 @@ public class LottoApp {
 		createAnimationArea();
 		create2oo12Area();
 		createDrawingArea();
+		createErrorArea();
 		createListeners();
 		shell.pack(); 
 	}
@@ -184,13 +191,18 @@ public class LottoApp {
 		labelDrawing12.setLayoutData(data);
 	}
 	
+	private void createErrorArea() {
+		labelError = new Label(shell, SWT.CENTER); 
+		labelError.setText("No Error");
+	}
+	
 	private void createListeners() {
 		fileSaveItem.addSelectionListener(new SelectionAdapterSave(shell));
 		fileExitItem.addSelectionListener(new SelectionAdapterExit(shell));
 		toolItemFontColor.addSelectionListener(new SelectionAdapterFontColor(shell, toggle50, toggle12));
 		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toggle50, toggle12));
 		for (Button t: toggle50) {
-			t.addSelectionListener(new SelectionAdapterToggle5(selected5));
+			t.addSelectionListener(new SelectionAdapterToggle5(selected5, labelError));
 		}
 	}
 	
