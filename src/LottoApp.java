@@ -41,7 +41,8 @@ public class LottoApp {
 	
 	private Label labelError; 
 	
-	private ArrayList <String> selected5 = new ArrayList<String>(); 
+	private ArrayList <String> selected5 = new ArrayList<String>();
+	private ArrayList <String> selected2 = new ArrayList<String>();
 
 	public LottoApp() {
 		createDisplay();
@@ -203,6 +204,9 @@ public class LottoApp {
 		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toggle50, toggle12));
 		for (Button t: toggle50) {
 			t.addSelectionListener(new SelectionAdapterToggle5(selected5, labelError));
+		}
+		for (Button t: toggle12) {
+			t.addSelectionListener(new SelectionAdapterToggle2(selected2, labelError));
 		}
 	}
 	
