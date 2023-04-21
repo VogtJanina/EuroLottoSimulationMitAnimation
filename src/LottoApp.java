@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
 
@@ -22,6 +23,12 @@ public class LottoApp {
 	private ToolItem toolItemBackgroundColor; 
 	private ToolItem toolItemFontColor; 
 	private ToolItem toolItemReset; 
+	
+	private Image iconRun;
+	private Image iconSave;
+	private Image iconBackgroundColor;
+	private Image iconFontColor;
+	private Image iconReset;
 	
 	private Label labelToggle50;
 	private Button [] toggle50; 
@@ -89,15 +96,27 @@ public class LottoApp {
 		GridData data = new GridData(SWT.FILL, SWT.CENTER, true, false,2,1); 
 		toolBar.setLayoutData(data);
 		toolItemRun = new ToolItem(toolBar, SWT.PUSH); 
-		toolItemRun.setText("Run"); 
+		//toolItemRun.setText("Run"); 
 		toolItemSave = new ToolItem(toolBar, SWT.PUSH); 
-		toolItemSave.setText("Save"); 
+		//toolItemSave.setText("Save"); 
 		toolItemBackgroundColor = new ToolItem(toolBar, SWT.PUSH); 
-		toolItemBackgroundColor.setText("BackgrundColor"); 
+		//toolItemBackgroundColor.setText("BackgrundColor"); 
 		toolItemFontColor = new ToolItem(toolBar, SWT.PUSH); 
-		toolItemFontColor.setText("FontColor"); 
+		//toolItemFontColor.setText("FontColor"); 
 		toolItemReset = new ToolItem(toolBar, SWT.PUSH); 
-		toolItemReset.setText("Reset"); 
+		//toolItemReset.setText("Reset"); 
+
+		// Set Icons
+		iconRun = new Image(display, Image.class.getResourceAsStream("/16x16/icons8-bmo-16.png"));
+		toolItemRun.setImage(iconRun);
+		iconSave = new Image(display, Image.class.getResourceAsStream("/16x16/icons8-speichern-16.png"));
+		toolItemSave.setImage(iconSave);
+		iconBackgroundColor = new Image(display, Image.class.getResourceAsStream("/16x16/aquarell.png"));
+		toolItemBackgroundColor.setImage(iconBackgroundColor);
+		iconFontColor = new Image(display, Image.class.getResourceAsStream("/16x16/icons8-textfarbe-16.png"));
+		toolItemFontColor.setImage(iconFontColor);
+		iconReset = new Image(display, Image.class.getResourceAsStream("/16x16/icons8-reset-16.png"));
+		toolItemReset.setImage(iconReset);
 	}
 	
 	private void create5oo50Area() {
