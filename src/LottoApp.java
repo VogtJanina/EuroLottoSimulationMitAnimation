@@ -51,6 +51,9 @@ public class LottoApp {
 	private ArrayList <String> selected5 = new ArrayList<String>();
 	private ArrayList <String> selected2 = new ArrayList<String>();
 
+	private Color fontColor;
+	private Color backgroundColor;
+
 	public LottoApp() {
 		createDisplay();
 		createShell();
@@ -221,6 +224,7 @@ public class LottoApp {
 		fileExitItem.addSelectionListener(new SelectionAdapterExit(shell));
 		toolItemFontColor.addSelectionListener(new SelectionAdapterFontColor(shell, toggle50, toggle12));
 		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toggle50, toggle12));
+		toolItemReset.addSelectionListener(new SelectionAdapterReset(shell, fontColor, backgroundColor));
 		for (Button t: toggle50) {
 			t.addSelectionListener(new SelectionAdapterToggle5(selected5, labelError));
 		}
