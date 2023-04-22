@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.*;
@@ -31,6 +34,7 @@ public class LottoApp {
 	private Image iconReset;
 	
 	private Label labelToggle50;
+	private ArrayList<Integer> numbers50 = new ArrayList<Integer>(); 
 	private Button [] toggle50; 
 	private String [] text50 = new String[50]; 
 	
@@ -38,12 +42,17 @@ public class LottoApp {
 	private Animation animation; 
 	
 	private Label labelToggle12; 
+	private ArrayList<Integer> numbers12 = new ArrayList<Integer>(); 
 	private Button [] toggle12; 
 	private String [] text12 = new String[12]; 
 	
 	private Label labelDrawing50; 
+	private ArrayList<Integer> numbersDrawing50; 
+	private int quantity5 = 5; 
 	private Label [] labelResult50; 
 	private Label labelDrawing12; 
+	private ArrayList<Integer> numberDrawings12;
+	private int quantity2 = 2; 
 	private Label [] labelResult12; 
 	
 	private Label labelError; 
@@ -133,7 +142,8 @@ public class LottoApp {
 		labelToggle50.setLayoutData(data);
 		
 		for (int i = 1; i <=50; i++) {
-			text50[i-1] = String.valueOf(i); 
+			text50[i-1] = String.valueOf(i);
+			numbers50.add(i); 
 		}
 		System.out.println(text50);
 		
@@ -174,6 +184,7 @@ public class LottoApp {
 		
 		for (int i = 1; i <=12; i++) {
 			text12[i-1] = String.valueOf(i); 
+			numbers12.add(i); 
 		}
 		System.out.println(text12);
 		
@@ -220,8 +231,10 @@ public class LottoApp {
 	}
 	
 	private void createListeners() {
-		fileSaveItem.addSelectionListener(new SelectionAdapterSave(shell));
+		fileSaveItem.addSelectionListener(new SelectionAdapterSave(shell, selected5, selected5));
+		toolItemSave.addSelectionListener(new SelectionAdapterSave(shell, selected5, selected5));
 		fileExitItem.addSelectionListener(new SelectionAdapterExit(shell));
+		toolItemRun.addSelectionListener(new SelectionAdapterRun(shell, numbers50, quantity5, numbers12, quantity2));
 		toolItemFontColor.addSelectionListener(new SelectionAdapterFontColor(shell, toggle50, toggle12));
 		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toggle50, toggle12));
 		toolItemReset.addSelectionListener(new SelectionAdapterReset(shell, fontColor, backgroundColor));
