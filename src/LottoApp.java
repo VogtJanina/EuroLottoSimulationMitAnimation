@@ -49,11 +49,11 @@ public class LottoApp {
 	private Label labelDrawing50; 
 	private ArrayList<Integer> numbersDrawing50; 
 	private int quantity5 = 5; 
-	private Label [] labelResult50; 
+	private Button [] buttonResult50; 
 	private Label labelDrawing12; 
 	private ArrayList<Integer> numberDrawings12;
 	private int quantity2 = 2; 
-	private Label [] labelResult12; 
+	private Button [] buttonResult12; 
 	
 	private Label labelError; 
 	
@@ -206,21 +206,21 @@ public class LottoApp {
 		labelDrawing50.setText("Ziehung 5 aus 50:");
 		GridData data = new GridData(SWT.LEFT, SWT.FILL, true, false,5,1); 
 		labelDrawing50.setLayoutData(data);
-		labelResult50 = new Label[5];
-		for (int i=0; i<labelResult50.length; i++) {
-			labelResult50[i] = new Label(group, SWT.CENTER); 
-			labelResult50[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
-			labelResult50[i].setText("X");
-			labelResult50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
+		buttonResult50 = new Button[5];
+		for (int i=0; i<buttonResult50.length; i++) {
+			buttonResult50[i] = new Button(group, SWT.CENTER); 
+			buttonResult50[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
+			buttonResult50[i].setText("X");
+			buttonResult50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 		labelDrawing12 = new Label(group, SWT.CENTER); 
 		labelDrawing12.setText("Ziehung 2 aus 12:");
-		labelResult12 = new Label[2];
-		for (int i=0; i<labelResult12.length; i++) {
-			labelResult12[i] = new Label(group, SWT.CENTER); 
-			labelResult12[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
-			labelResult12[i].setText("X");
-			labelResult12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
+		buttonResult12 = new Button[2];
+		for (int i=0; i<buttonResult12.length; i++) {
+			buttonResult12[i] = new Button(group, SWT.CENTER); 
+			buttonResult12[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
+			buttonResult12[i].setText("e");
+			buttonResult12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 		labelDrawing12.setLayoutData(data);
 	}

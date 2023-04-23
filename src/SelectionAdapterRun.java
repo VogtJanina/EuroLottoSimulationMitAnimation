@@ -23,9 +23,31 @@ public class SelectionAdapterRun extends SelectionAdapter{
 	@Override
 	public void widgetSelected(SelectionEvent e) {
 		Drawing drawing1 = new Drawing(numbers1, quantity1); 
-		drawing1.drawLotteryNumbers();
+		ArrayList<Integer> drawingResult1 = drawing1.drawLotteryNumbers();
 		Drawing drawing2 = new Drawing(numbers2, quantity2); 
-		drawing2.drawLotteryNumbers();
+		ArrayList<Integer> drawingResult2 = drawing2.drawLotteryNumbers();
+		
+		Control[] children = parent.getChildren(); 
+		Group groupResult = (Group) children[4]; 
+		Control[] childrenResult = groupResult.getChildren(); 
+		
+		int[] indexResultButtons5 = {1,2,3,4,5};
+		int[] indexResultButtons2 = {7,8};
+		Button btn; 
+		for (int i = 0; i<indexResultButtons5.length; i++) {
+			btn = (Button)childrenResult[indexResultButtons5[i]];
+			btn.setText(drawingResult1.get(i).toString());
+		}
+		for (int i = 0; i<indexResultButtons2.length; i++) {
+			btn = (Button)childrenResult[indexResultButtons2[i]];
+			btn.setText(drawingResult2.get(i).toString());
+		}
+		
+		for (int i=0; i<childrenResult.length; i++) {
+			System.out.print(i);
+			System.out.println(childrenResult[i]);
+		}
+		
 	}
 
 }

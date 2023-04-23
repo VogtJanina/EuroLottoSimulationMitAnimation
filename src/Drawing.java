@@ -9,7 +9,7 @@ public class Drawing {
 		this.numbers = numbers; 
 		this.quantity = quantity; 
 	}
-	public void drawLotteryNumbers() {
+	public ArrayList<Integer> drawLotteryNumbers() {
 		for (int i=0; i<quantity; i++) {
 			Random lottofairy = new Random(); 
 			int nextPos = lottofairy.nextInt(numbers.size()); 
@@ -17,5 +17,6 @@ public class Drawing {
 			drawing.add(nextNumber); 
 		}
 		System.out.println(drawing);
+		return drawing; 
 	}
 }
