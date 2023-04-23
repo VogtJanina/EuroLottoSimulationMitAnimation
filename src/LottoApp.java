@@ -159,6 +159,10 @@ public class LottoApp {
 	
 	private void createAnimationArea() {
 		GridData groupData = new GridData(GridData.FILL, GridData.FILL,true,true);
+		groupData.horizontalAlignment=  GridData.FILL;
+		groupData.verticalAlignment = GridData.FILL;
+		groupData.grabExcessHorizontalSpace = true;
+		groupData.grabExcessVerticalSpace = true;
 		groupData.horizontalSpan =1;
 		groupData.verticalSpan =1;
 		  
@@ -235,10 +239,10 @@ public class LottoApp {
 		fileSaveItem.addSelectionListener(new SelectionAdapterSave(shell, selected5, selected5));
 		toolItemSave.addSelectionListener(new SelectionAdapterSave(shell, selected5, selected5));
 		fileExitItem.addSelectionListener(new SelectionAdapterExit(shell));
-		toolItemRun.addSelectionListener(new SelectionAdapterRun(shell, numbers50, quantity5, numbers12, quantity2));
+		toolItemRun.addSelectionListener(new SelectionAdapterRun(shell, numbers50, quantity5, numbers12, quantity2, animation));
 		toolItemFontColor.addSelectionListener(new SelectionAdapterFontColor(shell, toggle50, toggle12));
 		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toggle50, toggle12));
-		toolItemReset.addSelectionListener(new SelectionAdapterReset(shell, fontColor, backgroundColor));
+		toolItemReset.addSelectionListener(new SelectionAdapterReset(shell, fontColor, backgroundColor, animation));
 		for (Button t: toggle50) {
 			t.addSelectionListener(new SelectionAdapterToggle5(shell, selected5, selected2));
 		}

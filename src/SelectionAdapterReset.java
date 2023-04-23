@@ -8,11 +8,13 @@ public class SelectionAdapterReset extends SelectionAdapter{
 	private Shell parent;
 	private Color background;
 	private Color font;
+	private Animation animation;
 	
-	public SelectionAdapterReset(Shell parent, Color font, Color background ) {
+	public SelectionAdapterReset(Shell parent, Color font, Color background, Animation animation ) {
 		this.parent = parent;
 		this.background = background;
-		this.font = font; 
+		this.font = font;
+		this.animation = animation; 
 	}
 	
 	@Override
@@ -66,6 +68,8 @@ public class SelectionAdapterReset extends SelectionAdapter{
 			}
 			currentFontColor.dispose();
 			currentBackgroundColor.dispose();
+			Display display = parent.getDisplay();
+			display.timerExec(-1,animation);
 			
 			
 			break; 
