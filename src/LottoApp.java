@@ -107,7 +107,8 @@ public class LottoApp {
 		toolBar = new ToolBar(shell, SWT.HORIZONTAL); 
 		GridData data = new GridData(SWT.FILL, SWT.CENTER, true, false,2,1); 
 		toolBar.setLayoutData(data);
-		toolItemRun = new ToolItem(toolBar, SWT.PUSH); 
+		toolItemRun = new ToolItem(toolBar, SWT.PUSH);
+		toolItemRun.setEnabled(false); 
 		//toolItemRun.setText("Run"); 
 		toolItemSave = new ToolItem(toolBar, SWT.PUSH); 
 		//toolItemSave.setText("Save"); 
@@ -239,10 +240,10 @@ public class LottoApp {
 		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toggle50, toggle12));
 		toolItemReset.addSelectionListener(new SelectionAdapterReset(shell, fontColor, backgroundColor));
 		for (Button t: toggle50) {
-			t.addSelectionListener(new SelectionAdapterToggle5(selected5, labelError));
+			t.addSelectionListener(new SelectionAdapterToggle5(shell, selected5, selected2));
 		}
 		for (Button t: toggle12) {
-			t.addSelectionListener(new SelectionAdapterToggle2(selected2, labelError));
+			t.addSelectionListener(new SelectionAdapterToggle2(shell, selected5, selected2));
 		}
 	}
 	
