@@ -9,12 +9,14 @@ public class SelectionAdapterReset extends SelectionAdapter{
 	private Color background;
 	private Color font;
 	private Animation animation;
+	private DrawingAnimation drawingAnimation;
 	
-	public SelectionAdapterReset(Shell parent, Color font, Color background, Animation animation ) {
+	public SelectionAdapterReset(Shell parent, Color font, Color background, Animation animation , DrawingAnimation drawingAnimation) {
 		this.parent = parent;
 		this.background = background;
 		this.font = font;
-		this.animation = animation; 
+		this.animation = animation;
+		this.drawingAnimation = drawingAnimation;
 	}
 	
 	@Override
@@ -70,7 +72,7 @@ public class SelectionAdapterReset extends SelectionAdapter{
 			currentBackgroundColor.dispose();
 			Display display = parent.getDisplay();
 			display.timerExec(-1,animation);
-			
+			display.timerExec(-1, drawingAnimation);
 			
 			break; 
 		case SWT.NO: break; 
