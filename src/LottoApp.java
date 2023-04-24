@@ -36,7 +36,7 @@ public class LottoApp {
 	private Label labelToggle50;
 	private ArrayList<Integer> numbers50 = new ArrayList<Integer>(); 
 	private Button [] toggle50; 
-	private String [] text50 = new String[50]; 
+	private ArrayList<String> text50 = new ArrayList<String>();  
 	
 	private Canvas canvas; 
 	private Animation animation; 
@@ -142,17 +142,26 @@ public class LottoApp {
 		GridData data = new GridData(SWT.LEFT, SWT.FILL, true, false,5,1); 
 		labelToggle50.setLayoutData(data);
 		
-		for (int i = 1; i <=50; i++) {
-			text50[i-1] = String.valueOf(i);
-			numbers50.add(i); 
+		int k = 1; 
+		for (int j = 1; j<=10; j++) {
+			for (int i = 0; i<5; i++) {
+				text50.add(String.valueOf(k));  
+				numbers50.add(k); 
+				k+=10; 
+			}
+			k = j+1; 
 		}
-		System.out.println(text50);
 		
-		toggle50 = new Button[text50.length];
+		System.out.println("Text 50"+ text50.size());
+		for (String i: text50) {
+			System.out.println(i);
+		}
+		
+		toggle50 = new Button[text50.size()];
 		for (int i=0; i<toggle50.length; i++) {
 			toggle50[i] = new Button(group,SWT.TOGGLE);
 			toggle50[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
-			toggle50[i].setText(text50[i]);
+			toggle50[i].setText(text50.get(i));
 			toggle50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 	}
