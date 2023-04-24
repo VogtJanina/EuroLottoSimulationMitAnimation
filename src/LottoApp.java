@@ -54,6 +54,9 @@ public class LottoApp {
 	private ArrayList<Integer> numberDrawings12;
 	private int quantity2 = 2; 
 	private Button [] buttonResult12; 
+	private Drawing drawing5;
+	private Drawing drawing2;
+	private DrawingAnimation drawingAnimation;
 	
 	private Label labelError; 
 	
@@ -237,6 +240,9 @@ public class LottoApp {
 			buttonResult12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 		labelDrawing12.setLayoutData(data);
+		drawing5 = new Drawing(numbers50, quantity5);
+		drawing2 = new Drawing(numbers12, quantity2);
+		drawingAnimation = new DrawingAnimation(shell,drawing5, drawing2);
 	}
 	
 	private void createErrorArea() {
@@ -248,10 +254,10 @@ public class LottoApp {
 		fileSaveItem.addSelectionListener(new SelectionAdapterSave(shell, selected5, selected5));
 		toolItemSave.addSelectionListener(new SelectionAdapterSave(shell, selected5, selected5));
 		fileExitItem.addSelectionListener(new SelectionAdapterExit(shell));
-		toolItemRun.addSelectionListener(new SelectionAdapterRun(shell, numbers50, quantity5, numbers12, quantity2, animation));
+		toolItemRun.addSelectionListener(new SelectionAdapterRun( animation, drawingAnimation));
 		toolItemFontColor.addSelectionListener(new SelectionAdapterFontColor(shell, toggle50, toggle12));
 		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toggle50, toggle12));
-		toolItemReset.addSelectionListener(new SelectionAdapterReset(shell, fontColor, backgroundColor, animation));
+		toolItemReset.addSelectionListener(new SelectionAdapterReset(shell, fontColor, backgroundColor, animation, drawingAnimation));
 		for (Button t: toggle50) {
 			t.addSelectionListener(new SelectionAdapterToggle5(shell, selected5, selected2));
 		}
