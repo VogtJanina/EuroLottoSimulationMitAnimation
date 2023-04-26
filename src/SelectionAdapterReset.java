@@ -15,6 +15,7 @@ public class SelectionAdapterReset extends SelectionAdapter{
 	private DrawingAnimation drawingAnimation;
 	private ArrayList<String> selected5;
 	private ArrayList<String> selected2;
+
 	
 	public SelectionAdapterReset(Shell parent,ToolItem toolItemRun, Color font, Color background, Animation animation , DrawingAnimation drawingAnimation,
 			ArrayList<String> selected5, ArrayList<String> selected2) {
@@ -85,9 +86,10 @@ public class SelectionAdapterReset extends SelectionAdapter{
 			toolItemRun.setEnabled(false);
 			selected5.clear();
 			selected2.clear();
-			
-			System.out.println("selected5: " + selected5);
-			System.out.println("selected2: " + selected2);
+//			System.out.println("selected5: " + selected5);
+//			System.out.println("selected2: " + selected2);
+			drawingAnimation.setCounter(0);			
+		
 			currentFontColor.dispose();
 			currentBackgroundColor.dispose();
 			Display display = parent.getDisplay();

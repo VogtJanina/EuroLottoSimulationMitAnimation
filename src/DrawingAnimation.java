@@ -15,7 +15,7 @@ public class DrawingAnimation implements Runnable{
 	private Drawing drawing1;
 	private Drawing drawing2;
 	private Group groupResult;
-	private int counter;
+	private int counter = 0;
 	private int[] indexResultButtons = {1,2,3,4,5,7,8};
 	
 	public DrawingAnimation(Shell parent, Drawing drawing1, Drawing drawing2) {
@@ -25,7 +25,7 @@ public class DrawingAnimation implements Runnable{
 		
 		Control[] children = parent.getChildren(); 
 		this.groupResult = (Group) children[4];
-		System.out.println("drawing: " + drawingArray);
+//		System.out.println("drawing: " + drawingArray);
 
 		
 	}
@@ -36,36 +36,41 @@ public class DrawingAnimation implements Runnable{
 		}
 		if (counter < indexResultButtons.length) {
 			counter++;
-			System.out.println("DrawingAnimation counter: " + counter);
-			System.out.println("DrawingAnimation count if: start= "+ start);
+//			System.out.println("DrawingAnimation counter: " + counter);
+//			System.out.println("DrawingAnimation count if: start= "+ start);
 			start = true;
-			
 		}
 		else {
 			start = false;
 			parent.getDisplay().timerExec(-1, this);
-			System.out.println("DrawingAnimation count else: start= "+ start);
 		}
 		
 	}
 	public void draw() {
 		System.out.println("in DrawingAnimation draw(): ");
 		if (start) {
-			System.out.println("in draw() if");
+//			System.out.println("in draw() if");
 			Control[] childrenResult = groupResult.getChildren();
 			Button btn;
 			btn = (Button)childrenResult[indexResultButtons[counter-1]];
 			btn.setText(drawingArray.get(counter-1).toString());
-			System.out.println("DrawingAnimation btn.set: "+ counter + " to " + btn.getText());	
+//			System.out.println("DrawingAnimation btn.set: "+ counter + " to " + btn.getText());	
 			groupResult.redraw();
 		}
-		parent.getDisplay().timerExec(-1, this);
+		else {
+			parent.getDisplay().timerExec(-1, this);
+		}
 	}
 	
-	
+	public int getCounter() {
+		return counter;
+	}
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
 	@Override
 	public void run() {
-		System.out.println("run DrawingAnimation");
+//		System.out.println("run DrawingAnimation");
 		count();
 		draw();
 
