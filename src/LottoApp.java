@@ -51,7 +51,7 @@ public class LottoApp {
 	private int quantity5 = 5; 
 	private Button [] buttonResult50; 
 	private Label labelDrawing12; 
-	private ArrayList<Integer> numberDrawings12;
+	private ArrayList<Integer> numbersDrawing12;
 	private int quantity2 = 2; 
 	private Button [] buttonResult12; 
 	private Drawing drawing5;
@@ -217,6 +217,7 @@ public class LottoApp {
 	private void createDrawingArea() {
 		GridLayout layoutGroup = new GridLayout(); 
 		layoutGroup.numColumns = 5; 
+		layoutGroup.makeColumnsEqualWidth = true; 
 		Group group = new Group(shell, SWT.LEFT); 
 		group.setLayout(layoutGroup);
 		labelDrawing50 = new Label(group,SWT.CENTER); 
@@ -227,7 +228,7 @@ public class LottoApp {
 		for (int i=0; i<buttonResult50.length; i++) {
 			buttonResult50[i] = new Button(group, SWT.CENTER); 
 			buttonResult50[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
-			buttonResult50[i].setText("X");
+			buttonResult50[i].setText(" X ");
 			buttonResult50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 		labelDrawing12 = new Label(group, SWT.CENTER); 
@@ -236,7 +237,7 @@ public class LottoApp {
 		for (int i=0; i<buttonResult12.length; i++) {
 			buttonResult12[i] = new Button(group, SWT.CENTER); 
 			buttonResult12[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
-			buttonResult12[i].setText("e");
+			buttonResult12[i].setText(" e ");
 			buttonResult12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 		labelDrawing12.setLayoutData(data);
@@ -257,7 +258,8 @@ public class LottoApp {
 		toolItemRun.addSelectionListener(new SelectionAdapterRun( animation, drawingAnimation));
 		toolItemFontColor.addSelectionListener(new SelectionAdapterFontColor(shell, toggle50, toggle12));
 		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toggle50, toggle12));
-		toolItemReset.addSelectionListener(new SelectionAdapterReset(shell, fontColor, backgroundColor, animation, drawingAnimation));
+		toolItemReset.addSelectionListener(new SelectionAdapterReset(shell,toolItemRun, fontColor, backgroundColor, animation, 
+											drawingAnimation, selected5, selected2));
 		for (Button t: toggle50) {
 			t.addSelectionListener(new SelectionAdapterToggle5(shell, selected5, selected2));
 		}
