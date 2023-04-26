@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -10,6 +11,8 @@ import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
 
 public class LottoApp {
+	
+	private ResourceBundle msgs;
 	
 	private Display display;
 	private Shell shell;
@@ -66,7 +69,8 @@ public class LottoApp {
 	private Color fontColor;
 	private Color backgroundColor;
 
-	public LottoApp() {
+	public LottoApp(ResourceBundle msgs) {
+		this.msgs = msgs;
 		createDisplay();
 		createShell();
 		createMenues();
@@ -94,16 +98,16 @@ public class LottoApp {
 		menuBar= new Menu(shell, SWT.BAR); 
 		shell.setMenuBar(menuBar);
 		fileTitle = new MenuItem(menuBar, SWT.CASCADE); 
-		fileTitle.setText("Datei");
+		fileTitle.setText(msgs.getString("file"));
 		
 		fileMenu = new Menu(shell, SWT.DROP_DOWN); 
 		fileTitle.setMenu(fileMenu);
 		fileSaveItem = new MenuItem(fileMenu, SWT.PUSH); 
 		//fileSaveItem.setAccelerator(SWT.CTRL + 'S');
-		fileSaveItem.setText("Speichern");
+		fileSaveItem.setText(msgs.getString("save"));
 		fileExitItem = new MenuItem(fileMenu, SWT.PUSH); 
 		//fileCloseItem.setAccelerator(SWT.CTRL + 'C');
-		fileExitItem.setText("Beenden");
+		fileExitItem.setText(msgs.getString("exit"));
 	}
 	
 	private void createToolBar() {
@@ -112,15 +116,15 @@ public class LottoApp {
 		toolBar.setLayoutData(data);
 		toolItemRun = new ToolItem(toolBar, SWT.PUSH);
 		toolItemRun.setEnabled(false); 
-		//toolItemRun.setText("Run"); 
+		//toolItemRun.setText(msgs.getString("run")); 
 		toolItemSave = new ToolItem(toolBar, SWT.PUSH); 
-		//toolItemSave.setText("Save"); 
+		//toolItemSave.setText(msgs.getString("save")); 
 		toolItemBackgroundColor = new ToolItem(toolBar, SWT.PUSH); 
-		//toolItemBackgroundColor.setText("BackgrundColor"); 
+		//toolItemBackgroundColor.setText(msgs.getString("backgroundColor")); 
 		toolItemFontColor = new ToolItem(toolBar, SWT.PUSH); 
-		//toolItemFontColor.setText("FontColor"); 
+		//toolItemFontColor.setText(msgs.getString("FontColor")); 
 		toolItemReset = new ToolItem(toolBar, SWT.PUSH); 
-		//toolItemReset.setText("Reset"); 
+		//toolItemReset.setText(msgs.getString("Reset")); 
 
 		// Set Icons
 		iconRun = new Image(display, Image.class.getResourceAsStream("/16x16/icons8-bmo-16.png"));
@@ -141,7 +145,7 @@ public class LottoApp {
 		Group group = new Group(shell, SWT.LEFT); 
 		group.setLayout(layoutGroup);
 		labelToggle50 = new Label(group,SWT.CENTER); 
-		labelToggle50.setText("5 aus 50:");
+		labelToggle50.setText(msgs.getString("5oo50"));
 		GridData data = new GridData(SWT.LEFT, SWT.FILL, true, false,5,1); 
 		labelToggle50.setLayoutData(data);
 		
@@ -195,7 +199,7 @@ public class LottoApp {
 		Group group = new Group(shell, SWT.LEFT); 
 		group.setLayout(layoutGroup);
 		labelToggle12 = new Label(group,SWT.CENTER); 
-		labelToggle12.setText("2 aus 12:");
+		labelToggle12.setText(msgs.getString("2oo12"));
 		GridData data = new GridData(SWT.LEFT, SWT.FILL, true, false,5,1); 
 		labelToggle12.setLayoutData(data);
 		
@@ -221,7 +225,7 @@ public class LottoApp {
 		Group group = new Group(shell, SWT.LEFT); 
 		group.setLayout(layoutGroup);
 		labelDrawing50 = new Label(group,SWT.CENTER); 
-		labelDrawing50.setText("Ziehung 5 aus 50:");
+		labelDrawing50.setText(msgs.getString("drawing5oo50"));
 		GridData data = new GridData(SWT.LEFT, SWT.FILL, true, false,5,1); 
 		labelDrawing50.setLayoutData(data);
 		buttonResult50 = new Button[5];
@@ -232,7 +236,7 @@ public class LottoApp {
 			buttonResult50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 		labelDrawing12 = new Label(group, SWT.CENTER); 
-		labelDrawing12.setText("Ziehung 2 aus 12:");
+		labelDrawing12.setText(msgs.getString("drawing2oo12"));
 		buttonResult12 = new Button[2];
 		for (int i=0; i<buttonResult12.length; i++) {
 			buttonResult12[i] = new Button(group, SWT.CENTER); 
@@ -248,7 +252,7 @@ public class LottoApp {
 	
 	private void createErrorArea() {
 		labelError = new Label(shell, SWT.CENTER); 
-		labelError.setText("No Error");
+		labelError.setText(msgs.getString("noError"));
 	}
 	
 	private void createListeners() {
