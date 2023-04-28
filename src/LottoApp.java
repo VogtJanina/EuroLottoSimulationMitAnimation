@@ -256,9 +256,9 @@ public class LottoApp {
 	}
 	
 	private void createListeners() {
-		fileSaveItem.addSelectionListener(new SelectionAdapterSave(shell, msgs, selected5, selected5));
-		toolItemSave.addSelectionListener(new SelectionAdapterSave(shell, msgs, selected5, selected5));
-		fileExitItem.addSelectionListener(new SelectionAdapterExit(shell));
+		fileSaveItem.addSelectionListener(new SelectionAdapterSave(shell, msgs, selected5, selected2));
+		toolItemSave.addSelectionListener(new SelectionAdapterSave(shell, msgs, selected5, selected2));
+		fileExitItem.addSelectionListener(new SelectionAdapterExit(shell, msgs));
 		toolItemRun.addSelectionListener(new SelectionAdapterRun( animation, drawingAnimation));
 		toolItemFontColor.addSelectionListener(new SelectionAdapterFontColor(shell, toggle50, toggle12));
 		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell, toggle50, toggle12));
