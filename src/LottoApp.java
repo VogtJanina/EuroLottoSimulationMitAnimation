@@ -122,9 +122,9 @@ public class LottoApp {
 		toolItemBackgroundColor = new ToolItem(toolBar, SWT.PUSH); 
 		//toolItemBackgroundColor.setText(msgs.getString("backgroundColor")); 
 		toolItemFontColor = new ToolItem(toolBar, SWT.PUSH); 
-		//toolItemFontColor.setText(msgs.getString("FontColor")); 
+		//toolItemFontColor.setText(msgs.getString("fontColor")); 
 		toolItemReset = new ToolItem(toolBar, SWT.PUSH); 
-		//toolItemReset.setText(msgs.getString("Reset")); 
+		//toolItemReset.setText(msgs.getString("reset")); 
 
 		// Set Icons
 		iconRun = new Image(display, Image.class.getResourceAsStream("/16x16/icons8-bmo-16.png"));
