@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
@@ -8,6 +9,7 @@ import org.eclipse.swt.widgets.*;
 public class SelectionAdapterReset extends SelectionAdapter{
 
 	private Shell parent;
+	private ResourceBundle msgs;
 	private ToolItem toolItemRun;
 	private Color background;
 	private Color font;
@@ -17,9 +19,10 @@ public class SelectionAdapterReset extends SelectionAdapter{
 	private ArrayList<String> selected2;
 
 	
-	public SelectionAdapterReset(Shell parent,ToolItem toolItemRun, Color font, Color background, Animation animation , DrawingAnimation drawingAnimation,
+	public SelectionAdapterReset(Shell parent,ResourceBundle msgs, ToolItem toolItemRun, Color font, Color background, Animation animation , DrawingAnimation drawingAnimation,
 			ArrayList<String> selected5, ArrayList<String> selected2) {
 		this.parent = parent;
+		this.msgs = msgs;
 		this.toolItemRun = toolItemRun;
 		this.background = background;
 		this.font = font;
@@ -32,7 +35,7 @@ public class SelectionAdapterReset extends SelectionAdapter{
 	@Override
 	public void widgetSelected(SelectionEvent e) {
 		MessageBox messageBox = new MessageBox(parent, SWT.ICON_QUESTION | SWT.YES | SWT.NO); 
-		messageBox.setMessage("Möchtest du deine Änderungen wirklich zurücksetzen?");
+		messageBox.setMessage(msgs.getString("resetMessage"));
 		int result = messageBox.open();
 		Button btn;
 		Label label;

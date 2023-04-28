@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
@@ -7,10 +8,13 @@ import org.eclipse.swt.widgets.*;
 public class SelectionAdapterToggle2 extends SelectionAdapter{
 	
 	private Shell parent;
+	private ResourceBundle msgs;
 	private ArrayList<String> selected5; 
 	private ArrayList<String> selected2; 
-	public SelectionAdapterToggle2(Shell parent, ArrayList<String> selected5, ArrayList<String> selected2) { 
+	
+	public SelectionAdapterToggle2(Shell parent, ResourceBundle msgs, ArrayList<String> selected5, ArrayList<String> selected2) { 
 		this.parent = parent; 
+		this.msgs = msgs;
 		this.selected5 = selected5; 
 		this.selected2 = selected2; 
 	}
@@ -34,7 +38,7 @@ public class SelectionAdapterToggle2 extends SelectionAdapter{
 			}
 			else {
 				toggleButton.setSelection(false);
-				labelError.setText("Nur 2");
+				labelError.setText(msgs.getString("error2"));
 			}
 			if(selected5.size() == 5 && selected2.size()==2) {
 				toolItemRun.setEnabled(true);
@@ -45,7 +49,7 @@ public class SelectionAdapterToggle2 extends SelectionAdapter{
 			selected2.remove(text); 
 			toolItemRun.setEnabled(false);
 			//TODO fileSaveItem setenable(false)
-			labelError.setText("No Error");
+			labelError.setText(msgs.getString("noError"));
 		}
 		System.out.println(selected2);
 	}
