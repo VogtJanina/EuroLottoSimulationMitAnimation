@@ -11,17 +11,21 @@ public class DrawingAnimation implements Runnable{
 	private boolean start = false;
 	
 	private Shell parent;  
-	ArrayList<Integer> drawingArray = new ArrayList<Integer>();
+	private ArrayList<Integer> drawingArray = new ArrayList<Integer>();
+	private ArrayList<Integer> numbersDrawing50;
+	private ArrayList<Integer> numbersDrawing12;
 	private Drawing drawing1;
 	private Drawing drawing2;
 	private Group groupResult;
 	private int counter = 0;
 	private int[] indexResultButtons = {1,2,3,4,5,7,8};
 	
-	public DrawingAnimation(Shell parent, Drawing drawing1, Drawing drawing2) {
+	public DrawingAnimation(Shell parent, Drawing drawing1, Drawing drawing2, ArrayList<Integer> numbersDrawing50, ArrayList<Integer> numbersDrawing12) {
 		this.parent = parent; 
 		this.drawing1 = drawing1;
 		this.drawing2 = drawing2;
+		this.numbersDrawing50 = numbersDrawing50;
+		this.numbersDrawing12 = numbersDrawing12;
 		
 		Control[] children = parent.getChildren(); 
 		this.groupResult = (Group) children[4];
@@ -31,8 +35,12 @@ public class DrawingAnimation implements Runnable{
 	}
 	public void count() {
 		if (counter == 0) {
+			numbersDrawing50.clear();
+			numbersDrawing12.clear();
 			drawingArray.addAll(drawing1.drawLotteryNumbers());
 			drawingArray.addAll(drawing2.drawLotteryNumbers());
+			numbersDrawing50.addAll(drawingArray.subList(0, 5));
+			numbersDrawing12.addAll(drawingArray.subList(5, 7));
 		}
 		if (counter < indexResultButtons.length) {
 			counter++;
@@ -67,6 +75,10 @@ public class DrawingAnimation implements Runnable{
 	}
 	public void setCounter(int counter) {
 		this.counter = counter;
+	}
+	
+	public ArrayList<Integer> getDrawingArray() {
+		return drawingArray;
 	}
 	@Override
 	public void run() {

@@ -50,11 +50,11 @@ public class LottoApp {
 	private String [] text12 = new String[12]; 
 	
 	private Label labelDrawing50; 
-	private ArrayList<Integer> numbersDrawing50; 
+	public ArrayList<Integer> numbersDrawing50 = new ArrayList<Integer>(); 
 	private int quantity5 = 5; 
 	private Button [] buttonResult50; 
 	private Label labelDrawing12; 
-	private ArrayList<Integer> numbersDrawing12;
+	public ArrayList<Integer> numbersDrawing12 = new ArrayList<Integer>();
 	private int quantity2 = 2; 
 	private Button [] buttonResult12; 
 	private Drawing drawing5;
@@ -247,7 +247,7 @@ public class LottoApp {
 		labelDrawing12.setLayoutData(data);
 		drawing5 = new Drawing(numbers50, quantity5);
 		drawing2 = new Drawing(numbers12, quantity2);
-		drawingAnimation = new DrawingAnimation(shell,drawing5, drawing2);
+		drawingAnimation = new DrawingAnimation(shell,drawing5, drawing2, numbersDrawing50, numbersDrawing12);
 	}
 	
 	private void createErrorArea() {
@@ -256,10 +256,10 @@ public class LottoApp {
 	}
 	
 	private void createListeners() {
-		fileSaveItem.addSelectionListener(new SelectionAdapterSave(shell, msgs, selected5, selected2));
-		toolItemSave.addSelectionListener(new SelectionAdapterSave(shell, msgs, selected5, selected2));
+		fileSaveItem.addSelectionListener(new SelectionAdapterSave(shell, msgs, selected5, selected2, numbersDrawing50, numbersDrawing12));
+		toolItemSave.addSelectionListener(new SelectionAdapterSave(shell, msgs, selected5, selected2, numbersDrawing50, numbersDrawing12));
 		fileExitItem.addSelectionListener(new SelectionAdapterExit(shell, msgs));
-		toolItemRun.addSelectionListener(new SelectionAdapterRun( animation, drawingAnimation));
+		toolItemRun.addSelectionListener(new SelectionAdapterRun( animation, drawingAnimation));//, numbersDrawing50, numbersDrawing12));
 		toolItemFontColor.addSelectionListener(new SelectionAdapterFontColor(shell, msgs, toggle50, toggle12, buttonResult50, buttonResult12));
 		toolItemBackgroundColor.addSelectionListener(new SelectionAdapterBackgroundColor(shell,msgs,  toggle50, toggle12, buttonResult50, buttonResult12));
 		toolItemReset.addSelectionListener(new SelectionAdapterReset(shell, msgs, toolItemRun, fontColor, backgroundColor, animation, 
