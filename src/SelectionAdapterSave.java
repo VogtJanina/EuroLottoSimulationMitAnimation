@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
@@ -6,13 +7,16 @@ import org.eclipse.swt.widgets.*;
 
 public class SelectionAdapterSave extends SelectionAdapter{
 
-	private Shell parent; 
+	private Shell parent;
+	private ResourceBundle msgs;
 	private ArrayList<String> selected5; 
 	private ArrayList<String> selected2; 
 	private String content; 
+
 	
-	public SelectionAdapterSave(Shell parent, ArrayList<String> selected5, ArrayList<String> selected2) {
+	public SelectionAdapterSave(Shell parent, ResourceBundle msgs, ArrayList<String> selected5, ArrayList<String> selected2) {
 		this.parent = parent; 
+		this.msgs = msgs;
 		this.selected5 = selected5; 
 		this.selected2 = selected2; 
 	}
@@ -22,8 +26,10 @@ public class SelectionAdapterSave extends SelectionAdapter{
 		FileDialog fileDialog = new FileDialog(parent, SWT.OPEN); 
 		String fileName = fileDialog.open(); 
 		if (fileName != null) {
-			content = "ausgewählte Zahlen: \n5 aus 50: " + selected5 + "\n2 aus 12: " + selected2;
-			content +="gezogene Zahlen: \n5 aus 50: " + selected5 + "\n2 aus 12:" + selected2;
+			content = msgs.getString("selectedNumbers") +":\n" + msgs.getString("5oo50") + ": " + selected5 + "\n"
+					+ msgs.getString("2oo12") + ": " + selected2 +"\n";
+			content += msgs.getString("drawnNumbers")+ ":\n" + msgs.getString("5oo50") + ": " + selected5 + "\n" 
+					+ msgs.getString("2oo12") + ": " + selected2;
 			//TODO win/lose
 			FileIO.write(fileName, content);
 		}
