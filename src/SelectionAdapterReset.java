@@ -25,7 +25,7 @@ public class SelectionAdapterReset extends SelectionAdapter{
 		messageBox.setMessage("Möchtest du deine Änderungen wirklich zurücksetzen?");
 		int result = messageBox.open();
 		Button btn;
-		Label label;
+		Button resultButton;
 		Color currentFontColor;
 		Color currentBackgroundColor;
 		switch(result) {
@@ -49,20 +49,20 @@ public class SelectionAdapterReset extends SelectionAdapter{
 						btn.setForeground(font);
 					}
 					else if (j > 0 & j < 6 & areaChildren[j] instanceof Label){
-						label = (Label) areaChildren[j];
+						resultButton = (Button) areaChildren[j];
 //						currentFontColor = label.getForeground();
 //						currentBackgroundColor = label.getBackground();
-						label.setBackground(background);
-						label.setForeground(font);
-						label.setText("X");
+						resultButton.setBackground(background);
+						resultButton.setForeground(font);
+						resultButton.setText("X");
 					}
 					else if (j > 6 & j <= 8 & areaChildren[j] instanceof Label){
-						label = (Label) areaChildren[j];
+						resultButton = (Button) areaChildren[j];
 //						currentFontColor = label.getForeground();
 //						currentBackgroundColor = label.getBackground();
-						label.setBackground(background);
-						label.setForeground(font);
-						label.setText("e");
+						resultButton.setBackground(background);
+						resultButton.setForeground(font);
+						resultButton.setText("e");
 					}
 				
 				}
