@@ -103,6 +103,7 @@ public class LottoApp {
 		fileMenu = new Menu(shell, SWT.DROP_DOWN); 
 		fileTitle.setMenu(fileMenu);
 		fileSaveItem = new MenuItem(fileMenu, SWT.PUSH); 
+		fileSaveItem.setEnabled(false);
 		//fileSaveItem.setAccelerator(SWT.CTRL + 'S');
 		fileSaveItem.setText(msgs.getString("save"));
 		fileExitItem = new MenuItem(fileMenu, SWT.PUSH); 
@@ -118,6 +119,7 @@ public class LottoApp {
 		toolItemRun.setEnabled(false); 
 		//toolItemRun.setText(msgs.getString("run")); 
 		toolItemSave = new ToolItem(toolBar, SWT.PUSH); 
+		toolItemSave.setEnabled(false);
 		//toolItemSave.setText(msgs.getString("save")); 
 		toolItemBackgroundColor = new ToolItem(toolBar, SWT.PUSH); 
 		//toolItemBackgroundColor.setText(msgs.getString("backgroundColor")); 

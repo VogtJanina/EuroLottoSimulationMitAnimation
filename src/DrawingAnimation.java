@@ -1,9 +1,15 @@
+import java.awt.MenuBar;
 import java.util.ArrayList;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.widgets.ToolItem;
 
 public class DrawingAnimation implements Runnable{
 
@@ -50,6 +56,14 @@ public class DrawingAnimation implements Runnable{
 		}
 		else {
 			start = false;
+			
+			Control[] children = parent.getChildren(); 
+			ToolBar toolBar = (ToolBar) children[0]; 
+			ToolItem toolItemSave = toolBar.getItem(1); 
+			toolItemSave.setEnabled(true);
+
+			//TODO fileItemSave.setEnable(true)
+			
 			parent.getDisplay().timerExec(-1, this);
 		}
 		
