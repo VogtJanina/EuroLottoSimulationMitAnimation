@@ -253,6 +253,8 @@ public class LottoApp {
 	private void createErrorArea() {
 		labelError = new Label(shell, SWT.CENTER); 
 		labelError.setText(msgs.getString("noError"));
+		GridData data = new GridData(SWT.FILL, SWT.FILL, true, true,1,1); 
+		labelError.setLayoutData(data);
 	}
 	
 	private void createListeners() {
