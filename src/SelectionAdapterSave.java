@@ -34,7 +34,6 @@ public class SelectionAdapterSave extends SelectionAdapter{
 					+ msgs.getString("2oo12") + selected2 +"\n";
 			content += msgs.getString("drawnNumbers")+ ":\n" + msgs.getString("5oo50") + numbersDrawing50 + "\n" 
 					+ msgs.getString("2oo12") + numbersDrawing12+"\n";
-			//TODO win/lose
 			int count5oo50 = 0; 
 			int count2oo12 = 0; 
 			for (String s5 : selected5) {

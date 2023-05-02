@@ -61,8 +61,12 @@ public class DrawingAnimation implements Runnable{
 			ToolBar toolBar = (ToolBar) children[0]; 
 			ToolItem toolItemSave = toolBar.getItem(1); 
 			toolItemSave.setEnabled(true);
-
-			//TODO fileItemSave.setEnable(true)
+			
+			Menu menuBar = parent.getMenuBar(); 
+			MenuItem fileTitle = menuBar.getItem(0); 
+			Menu fileMenu = fileTitle.getMenu(); 
+			MenuItem fileSaveItem = fileMenu.getItem(0); 
+			fileSaveItem.setEnabled(true);
 			
 			parent.getDisplay().timerExec(-1, this);
 		}
