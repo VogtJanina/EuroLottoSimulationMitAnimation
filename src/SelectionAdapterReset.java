@@ -84,7 +84,18 @@ public class SelectionAdapterReset extends SelectionAdapter{
 			toolItemRun.setEnabled(false);
 			selected5.clear();
 			selected2.clear();
-			drawingAnimation.setCounter(0);			
+			drawingAnimation.setCounter(0);	
+			
+			Menu menuBar = parent.getMenuBar(); 
+			MenuItem fileTitle = menuBar.getItem(0); 
+			Menu fileMenu = fileTitle.getMenu(); 
+			MenuItem fileSaveItem = fileMenu.getItem(0); 
+			fileSaveItem.setEnabled(false);
+			
+			ToolBar toolBar = (ToolBar) children[0];
+			System.out.println("Toolbar: " + toolBar.toString());
+			ToolItem toolItemSafe = toolBar.getItem(1);
+			toolItemSafe.setEnabled(false);
 		
 			currentFontColor.dispose();
 			currentBackgroundColor.dispose();
