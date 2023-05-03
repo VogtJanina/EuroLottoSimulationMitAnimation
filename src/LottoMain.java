@@ -9,7 +9,7 @@ public class LottoMain {
 			currentLocale = new Locale(args[0], args[1]);
 		}
 		else {
-			currentLocale = new Locale("en", "US");
+			currentLocale = new Locale("de", "DE");
 		}
 		
 		ResourceBundle msgs = ResourceBundle.getBundle("MessageBundle", currentLocale);
