@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.widgets.*;
 
@@ -42,13 +41,11 @@ public class SelectionAdapterToggle2 extends SelectionAdapter{
 			}
 			if(selected5.size() == 5 && selected2.size()==2) {
 				toolItemRun.setEnabled(true);
-				//TODO fileSaveItem setenable(true)
 			}
 		}
 		else {
 			selected2.remove(text); 
 			toolItemRun.setEnabled(false);
-			//TODO fileSaveItem setenable(false)
 			labelError.setText(msgs.getString("noError"));
 		}
 		System.out.println(selected2);

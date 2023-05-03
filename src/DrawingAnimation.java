@@ -1,10 +1,9 @@
-import java.awt.MenuBar;
+
 import java.util.ArrayList;
 
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
@@ -35,7 +34,7 @@ public class DrawingAnimation implements Runnable{
 		
 		Control[] children = parent.getChildren(); 
 		this.groupResult = (Group) children[4];
-//		System.out.println("drawing: " + drawingArray);
+
 
 		
 	}
@@ -50,8 +49,7 @@ public class DrawingAnimation implements Runnable{
 		}
 		if (counter < indexResultButtons.length) {
 			counter++;
-//			System.out.println("DrawingAnimation counter: " + counter);
-//			System.out.println("DrawingAnimation count if: start= "+ start);
+
 			start = true;
 		}
 		else {
@@ -75,12 +73,10 @@ public class DrawingAnimation implements Runnable{
 	public void draw() {
 		System.out.println("in DrawingAnimation draw(): ");
 		if (start) {
-//			System.out.println("in draw() if");
 			Control[] childrenResult = groupResult.getChildren();
 			Button btn;
 			btn = (Button)childrenResult[indexResultButtons[counter-1]];
-			btn.setText(drawingArray.get(counter-1).toString());
-//			System.out.println("DrawingAnimation btn.set: "+ counter + " to " + btn.getText());	
+			btn.setText(drawingArray.get(counter-1).toString());	
 			groupResult.redraw();
 		}
 		else {
@@ -100,7 +96,6 @@ public class DrawingAnimation implements Runnable{
 	}
 	@Override
 	public void run() {
-//		System.out.println("run DrawingAnimation");
 		count();
 		draw();
 
