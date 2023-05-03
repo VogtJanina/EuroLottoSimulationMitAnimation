@@ -71,6 +71,8 @@ public class LottoApp {
 
 	public LottoApp(ResourceBundle msgs) {
 		this.msgs = msgs;
+		fontColor = new Color(0,83,0);
+		backgroundColor = new Color(215,232,149);
 		createDisplay();
 		createShell();
 		createMenues();
@@ -171,6 +173,8 @@ public class LottoApp {
 			toggle50[i] = new Button(group,SWT.TOGGLE);
 			toggle50[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
 			toggle50[i].setText(text50.get(i));
+			toggle50[i].setForeground(fontColor);
+			toggle50[i].setBackground(backgroundColor);
 			toggle50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 	}
@@ -216,6 +220,8 @@ public class LottoApp {
 			toggle12[i] = new Button(group,SWT.TOGGLE);
 			toggle12[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
 			toggle12[i].setText(text12[i]);
+			toggle12[i].setForeground(fontColor);
+			toggle12[i].setBackground(backgroundColor);
 			toggle12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 	}
@@ -235,6 +241,8 @@ public class LottoApp {
 			buttonResult50[i] = new Button(group, SWT.CENTER); 
 			buttonResult50[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
 			buttonResult50[i].setText(" X ");
+			buttonResult50[i].setForeground(fontColor);
+			buttonResult50[i].setBackground(backgroundColor);
 			buttonResult50[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 		labelDrawing12 = new Label(group, SWT.CENTER); 
@@ -244,6 +252,8 @@ public class LottoApp {
 			buttonResult12[i] = new Button(group, SWT.CENTER); 
 			buttonResult12[i].setFont(new Font(display, "Arial",14,SWT.BOLD));
 			buttonResult12[i].setText(" e ");
+			buttonResult12[i].setForeground(fontColor);
+			buttonResult12[i].setBackground(backgroundColor);
 			buttonResult12[i].setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		}
 		labelDrawing12.setLayoutData(data);

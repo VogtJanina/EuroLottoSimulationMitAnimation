@@ -38,7 +38,6 @@ public class SelectionAdapterReset extends SelectionAdapter{
 		messageBox.setMessage(msgs.getString("resetMessage"));
 		int result = messageBox.open();
 		Button btn;
-		Button resultButton;
 		Color currentFontColor;
 		Color currentBackgroundColor;
 		switch(result) {
@@ -55,8 +54,6 @@ public class SelectionAdapterReset extends SelectionAdapter{
 				for (int j=1; j<areaChildren.length; j++) {
 					if (((i==index[0] | i==index[1])) &(areaChildren[j] instanceof Button)){
 						btn = (Button) areaChildren[j];
-//						currentFontColor = btn.getForeground();
-//						currentBackgroundColor = btn.getBackground();
 						btn.setSelection(false);
 						btn.setBackground(background);
 						btn.setForeground(font);
@@ -65,8 +62,6 @@ public class SelectionAdapterReset extends SelectionAdapter{
 					else if ((i==index[2]) & (j > 0) & (j < 6) & (areaChildren[j] instanceof Button)){
 						System.out.println("else if 0-6");
 						btn = (Button) areaChildren[j];
-//						currentFontColor = label.getForeground();
-//						currentBackgroundColor = label.getBackground();
 						btn.setBackground(background);
 						btn.setForeground(font);
 						System.out.print("Change btn.text from " + btn.getText() + " to ");
@@ -75,8 +70,6 @@ public class SelectionAdapterReset extends SelectionAdapter{
 					}
 					else if ((i==index[2]) & (j > 6) & (j <= 8) & (areaChildren[j] instanceof Button)){
 						btn = (Button) areaChildren[j];
-//						currentFontColor = label.getForeground();
-//						currentBackgroundColor = label.getBackground();
 						btn.setBackground(background);
 						btn.setForeground(font);
 						System.out.print("Change btn.text from " + btn.getText() + " to ");
@@ -91,8 +84,6 @@ public class SelectionAdapterReset extends SelectionAdapter{
 			toolItemRun.setEnabled(false);
 			selected5.clear();
 			selected2.clear();
-//			System.out.println("selected5: " + selected5);
-//			System.out.println("selected2: " + selected2);
 			drawingAnimation.setCounter(0);			
 		
 			currentFontColor.dispose();
